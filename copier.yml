@@ -1,0 +1,39 @@
+# ----------------------------------------------------------------------
+# |
+# |  Questions
+# |
+# ----------------------------------------------------------------------
+project_type:
+  type: str
+  choices:
+    - One
+    - Two
+
+one_question:
+  type: bool
+  when: "{{ project_type == 'One' }}"
+  default: False
+
+one_nested:
+  type: bool
+  when: "{{ one_question }}"
+  default: False
+
+two_question:
+  type: bool
+  when: "{{ project_type == 'Two' }}"
+  default: False
+
+two_nested:
+  type: bool
+  when: "{{ two_question }}"
+  default: False
+
+
+# ----------------------------------------------------------------------
+# |
+# |  Configuration
+# |
+# ----------------------------------------------------------------------
+_subdirectory: template
+_templates_suffix: ""
