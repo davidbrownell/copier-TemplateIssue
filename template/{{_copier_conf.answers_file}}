@@ -1,1 +1,5 @@
 {{ _copier_answers|to_nice_yaml -}}
+
+
+one_nested: {{ one_nested }}
+two_nested: {{ two_nested }}

@@ -11,24 +11,33 @@ project_type:
 
 one_question:
   type: bool
+  default: True
   when: "{{ project_type == 'One' }}"
-  default: False
-
-one_nested:
-  type: bool
-  when: "{{ one_question }}"
-  default: False
 
 two_question:
   type: bool
+  default: True
   when: "{{ project_type == 'Two' }}"
-  default: False
+
+one_nested_question:
+  type: bool
+  default: True
+  when: "{{ project_type == 'One' and one_question }}"
+
+two_nested_question:
+  type: bool
+  default: True
+  when: "{{ project_type == 'Two' and two_question }}"
+
+one_nested:
+  type: bool
+  when: False
+  default: "{{ project_type == 'One' and one_question and one_nested_question }}"
 
 two_nested:
   type: bool
-  when: "{{ two_question }}"
-  default: False
-
+  when: False
+  default: "{{ project_type == 'Two' and two_question and two_nested_question }}"
 
 # ----------------------------------------------------------------------
 # |
